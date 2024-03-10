@@ -220,34 +220,7 @@ def search_student():
 
     search_window.destroy()
 
-def display_search_result(student_info):
-    search_window = tk.Toplevel(root)
-    search_window.title("Search Result")
-    window_width = 600
-    window_height = 400
-    screen_width = search_window.winfo_screenwidth()
-    screen_height = search_window.winfo_screenheight()
-    x_coordinate = int((screen_width / 2) - (window_width / 2))
-    y_coordinate = int((screen_height / 2) - (window_height / 2))
-    search_window.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
 
-    title_font = ("Helvetica", 20)
-    label_font = ("Arial", 12)
-
-    tk.Label(search_window, text="S T U D E N T    I N F O R M A T I O N", font=(title_font[0], title_font[1], 'bold')).pack(pady=20)
-
-    label_width = 50
-    birthday = datetime.strptime(student_info[7], "%m/%d/%Y").strftime("%m/%d/%Y")
-    age = calculate_age(birthday)
-
-    tk.Label(search_window, text=f"Student Id:                          {student_info[0]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
-    tk.Label(search_window, text=f"Full Name:                           {student_info[1]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
-    tk.Label(search_window, text=f"Age:                                      {age}", width=label_width, anchor="w", font=label_font).pack(pady=5)
-    tk.Label(search_window, text=f"Sex:                                      {student_info[3]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
-    tk.Label(search_window, text=f"Email Address:                   {student_info[4]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
-    tk.Label(search_window, text=f"Address:                             {student_info[5]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
-    tk.Label(search_window, text=f"Contact Number:                {student_info[6]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
-    tk.Label(search_window, text=f"Birthday:                              {student_info[7]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
 
 def update_student():
     global search_entry, update_window, sex_var_update, email_entry, address_entry, contact_entry, birthday_entry
@@ -305,6 +278,35 @@ def update_student():
     search_window.destroy()
 
 
+def display_search_result(student_info):
+    search_window = tk.Toplevel(root)
+    search_window.title("Search Result")
+    window_width = 600
+    window_height = 400
+    screen_width = search_window.winfo_screenwidth()
+    screen_height = search_window.winfo_screenheight()
+    x_coordinate = int((screen_width / 2) - (window_width / 2))
+    y_coordinate = int((screen_height / 2) - (window_height / 2))
+    search_window.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
+
+    title_font = ("Helvetica", 20)
+    label_font = ("Arial", 12)
+
+    tk.Label(search_window, text="S T U D E N T    I N F O R M A T I O N", font=(title_font[0], title_font[1], 'bold')).pack(pady=20)
+
+    label_width = 50
+    birthday = datetime.strptime(student_info[7], "%m/%d/%Y").strftime("%m/%d/%Y")
+    age = calculate_age(birthday)
+
+    tk.Label(search_window, text=f"Student Id:                          {student_info[0]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+    tk.Label(search_window, text=f"Full Name:                           {student_info[1]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+    tk.Label(search_window, text=f"Age:                                      {age}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+    tk.Label(search_window, text=f"Sex:                                      {student_info[3]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+    tk.Label(search_window, text=f"Email Address:                   {student_info[4]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+    tk.Label(search_window, text=f"Address:                             {student_info[5]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+    tk.Label(search_window, text=f"Contact Number:                {student_info[6]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+    tk.Label(search_window, text=f"Birthday:                              {student_info[7]}", width=label_width, anchor="w", font=label_font).pack(pady=5)
+
 
 root = tk.Tk()
 root.title("Student Record Management System")
@@ -327,7 +329,6 @@ search_button.grid(row=2, column=0, padx=10, pady=5)
 
 update_button = tk.Button(button_frame, text="Update Student", font=("Helvetica", 12), command=update_student, width=20, height=3)
 update_button.grid(row=3, column=0, padx=10, pady=5)
-
 
 
 root.mainloop()
